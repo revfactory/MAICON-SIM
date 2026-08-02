@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Blender 자동 백업
+*.blend1
+*.blend2
+*.blend@
+
+# 검수 중간 산출물 (재생성 가능)
+_workspace/qa/verify_result.json

@@ -1,0 +1,630 @@
+{
+  "_meta": {
+    "name": "MAICON 정찰 드론 비행 타임라인",
+    "author": "motion-director",
+    "source": "82_drone_motion.py 가 실행 시점에 궤적을 실측해 생성한다. 손으로 고치지 말 것",
+    "owner_note": "UGV 타임라인은 spec/timeline.json (80_motion.py 소유) 이다. 이 파일은 드론 전용이며 80 과 서로 덮어쓰지 않는다."
+  },
+  "fps": 30,
+  "total_frames": 720,
+  "drone": {
+    "root": "DRN_Root",
+    "cam_anchor": "DRN_Cam",
+    "rotors": [
+      "DRN_Rotor_FL",
+      "DRN_Rotor_FR",
+      "DRN_Rotor_RL",
+      "DRN_Rotor_RR"
+    ],
+    "rotor_spin_dir": {
+      "FL": 1.0,
+      "FR": -1.0,
+      "RL": -1.0,
+      "RR": 1.0
+    },
+    "forward_axis": "+X",
+    "footprint_m": 0.172,
+    "rotor_r_m": 0.026,
+    "cruise_z_spec_m": 0.62,
+    "cam_note": "DRN_Cam 은 -Z 나디르. 화면 위쪽이 기체 전방(+X)"
+  },
+  "phases": [
+    {
+      "name": "IDLE",
+      "mode": "hold",
+      "frame_start": 1,
+      "frame_end": 48,
+      "duration_s": 1.567,
+      "length_m": 0.0,
+      "speed_max_mps": 0.0,
+      "speed_mean_mps": 0.0,
+      "z_range": [
+        0.0,
+        0.0
+      ],
+      "tilt_peak_deg": 0.0,
+      "clearance_min_m": 9.0
+    },
+    {
+      "name": "TAKEOFF",
+      "mode": "vert",
+      "frame_start": 48,
+      "frame_end": 110,
+      "duration_s": 2.067,
+      "length_m": 0.62,
+      "speed_max_mps": 0.4,
+      "speed_mean_mps": 0.295,
+      "z_range": [
+        0.0,
+        0.62
+      ],
+      "tilt_peak_deg": 0.0,
+      "clearance_min_m": 1.133
+    },
+    {
+      "name": "OUTBOUND",
+      "mode": "fly",
+      "frame_start": 110,
+      "frame_end": 300,
+      "duration_s": 6.333,
+      "length_m": 2.0883,
+      "speed_max_mps": 0.44,
+      "speed_mean_mps": 0.328,
+      "z_range": [
+        0.62,
+        1.2
+      ],
+      "tilt_peak_deg": 6.27,
+      "clearance_min_m": 0.1702
+    },
+    {
+      "name": "SHOOT_2",
+      "mode": "hover",
+      "frame_start": 300,
+      "frame_end": 360,
+      "duration_s": 2.0,
+      "length_m": 0.0,
+      "speed_max_mps": 0.0,
+      "speed_mean_mps": 0.0,
+      "z_range": [
+        1.2,
+        1.2
+      ],
+      "tilt_peak_deg": 1.63,
+      "clearance_min_m": 0.1702
+    },
+    {
+      "name": "TRANSIT",
+      "mode": "fly",
+      "frame_start": 360,
+      "frame_end": 500,
+      "duration_s": 4.667,
+      "length_m": 2.435,
+      "speed_max_mps": 0.696,
+      "speed_mean_mps": 0.518,
+      "z_range": [
+        0.7484,
+        1.2
+      ],
+      "tilt_peak_deg": 9.01,
+      "clearance_min_m": 0.1702
+    },
+    {
+      "name": "SHOOT_9",
+      "mode": "hover",
+      "frame_start": 500,
+      "frame_end": 560,
+      "duration_s": 2.0,
+      "length_m": 0.0,
+      "speed_max_mps": 0.001,
+      "speed_mean_mps": 0.0,
+      "z_range": [
+        1.05,
+        1.05
+      ],
+      "tilt_peak_deg": 3.86,
+      "clearance_min_m": 0.2181
+    },
+    {
+      "name": "RETURN",
+      "mode": "fly",
+      "frame_start": 560,
+      "frame_end": 680,
+      "duration_s": 4.0,
+      "length_m": 3.7711,
+      "speed_max_mps": 1.257,
+      "speed_mean_mps": 0.935,
+      "z_range": [
+        0.4,
+        1.05
+      ],
+      "tilt_peak_deg": 9.91,
+      "clearance_min_m": 0.1987
+    },
+    {
+      "name": "LAND",
+      "mode": "vert",
+      "frame_start": 680,
+      "frame_end": 720,
+      "duration_s": 1.333,
+      "length_m": 0.4,
+      "speed_max_mps": 0.4,
+      "speed_mean_mps": 0.293,
+      "z_range": [
+        0.0,
+        0.4
+      ],
+      "tilt_peak_deg": 1.65,
+      "clearance_min_m": 1.133
+    }
+  ],
+  "waypoints": [
+    {
+      "tag": "HOME",
+      "frame": 1,
+      "time_s": 0.0,
+      "pos": [
+        -1.95,
+        0.8,
+        0.0
+      ],
+      "spec_pos": [
+        -1.95,
+        0.8,
+        0.0
+      ],
+      "delta_from_spec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.0,
+      "yaw_deg": -0.33,
+      "clearance_m": 1.133,
+      "nearest": "SEC_07"
+    },
+    {
+      "tag": "TAKEOFF",
+      "frame": 110,
+      "time_s": 3.633,
+      "pos": [
+        -1.95,
+        0.8,
+        0.62
+      ],
+      "spec_pos": [
+        -1.95,
+        0.8,
+        0.62
+      ],
+      "delta_from_spec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.002,
+      "yaw_deg": -0.33,
+      "clearance_m": 1.1442,
+      "nearest": "SEC_07"
+    },
+    {
+      "tag": "FIRE_2_APPROACH",
+      "frame": 257,
+      "time_s": 8.533,
+      "pos": [
+        -0.226,
+        0.7896,
+        1.1485
+      ],
+      "spec_pos": [
+        -0.22,
+        0.79,
+        0.62
+      ],
+      "delta_from_spec": [
+        -0.006,
+        -0.0004,
+        0.5285
+      ],
+      "reach_error_m": 0.0062,
+      "speed_mps": 0.431,
+      "yaw_deg": 1.96,
+      "clearance_m": 0.2525,
+      "nearest": "FIRE_02"
+    },
+    {
+      "tag": "FIRE_2_SHOOT",
+      "frame": 300,
+      "time_s": 9.967,
+      "pos": [
+        0.03,
+        0.88,
+        1.2
+      ],
+      "spec_pos": [
+        0.03,
+        0.87,
+        0.62
+      ],
+      "delta_from_spec": [
+        0.0,
+        0.01,
+        0.58
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.0,
+      "yaw_deg": 28.84,
+      "clearance_m": 0.1702,
+      "nearest": "FIRE_02"
+    },
+    {
+      "tag": "TRANSIT",
+      "frame": 441,
+      "time_s": 14.667,
+      "pos": [
+        0.5973,
+        -0.3961,
+        0.7503
+      ],
+      "spec_pos": [
+        0.6,
+        -0.4,
+        0.62
+      ],
+      "delta_from_spec": [
+        -0.0027,
+        0.0039,
+        0.1303
+      ],
+      "reach_error_m": 0.0047,
+      "speed_mps": 0.696,
+      "yaw_deg": -59.01,
+      "clearance_m": 0.4014,
+      "nearest": "SEC_06"
+    },
+    {
+      "tag": "FIRE_9_SHOOT",
+      "frame": 500,
+      "time_s": 16.633,
+      "pos": [
+        1.3,
+        -0.95,
+        1.05
+      ],
+      "spec_pos": [
+        1.3,
+        -0.89,
+        0.62
+      ],
+      "delta_from_spec": [
+        0.0,
+        -0.06,
+        0.43
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.001,
+      "yaw_deg": -36.15,
+      "clearance_m": 0.2181,
+      "nearest": "FIRE_09"
+    },
+    {
+      "tag": "RETURN",
+      "frame": 654,
+      "time_s": 21.767,
+      "pos": [
+        -1.5657,
+        0.6077,
+        0.557
+      ],
+      "spec_pos": [
+        -1.55,
+        0.6,
+        0.62
+      ],
+      "delta_from_spec": [
+        -0.0157,
+        0.0077,
+        -0.063
+      ],
+      "reach_error_m": 0.0178,
+      "speed_mps": 1.209,
+      "yaw_deg": -205.68,
+      "clearance_m": 0.9149,
+      "nearest": "SEC_01"
+    },
+    {
+      "tag": "OVER_HOME",
+      "frame": 680,
+      "time_s": 22.633,
+      "pos": [
+        -1.95,
+        0.8,
+        0.4
+      ],
+      "spec_pos": [
+        -1.95,
+        0.8,
+        0.62
+      ],
+      "delta_from_spec": [
+        0.0,
+        0.0,
+        -0.22
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.001,
+      "yaw_deg": -264.63,
+      "clearance_m": 1.133,
+      "nearest": "SEC_07"
+    },
+    {
+      "tag": "LANDED",
+      "frame": 720,
+      "time_s": 23.967,
+      "pos": [
+        -1.95,
+        0.8,
+        0.0
+      ],
+      "spec_pos": [
+        -1.95,
+        0.8,
+        0.0
+      ],
+      "delta_from_spec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reach_error_m": 0.0,
+      "speed_mps": 0.004,
+      "yaw_deg": -360.33,
+      "clearance_m": 1.133,
+      "nearest": "SEC_07"
+    }
+  ],
+  "shoot": [
+    {
+      "tag": "FIRE_2_SHOOT",
+      "sector": 2,
+      "frame_start": 300,
+      "frame_end": 360,
+      "time_s": [
+        9.967,
+        11.967
+      ],
+      "hover_pos": [
+        0.03,
+        0.88,
+        1.2
+      ],
+      "plume": {
+        "axis": [
+          -0.023,
+          1.09
+        ],
+        "z0": 0.5792,
+        "apex": 0.977,
+        "r_top": 0.1505,
+        "roof": 0.61,
+        "lean_y": 0.102
+      },
+      "horizontal_offset_from_plume_axis_m": 0.2166,
+      "height_above_roof_m": 0.59,
+      "nadir_cam_off_axis_deg": 20.2,
+      "clearance_m": 0.1702,
+      "nearest": "FIRE_02",
+      "note": "나디르 카메라(DRN_Cam) 광축에서 20° 지점에 화재동이 온다. 화각 52° 이상이면 프레임에 들어온다."
+    },
+    {
+      "tag": "FIRE_9_SHOOT",
+      "sector": 9,
+      "frame_start": 500,
+      "frame_end": 560,
+      "time_s": [
+        16.633,
+        18.633
+      ],
+      "hover_pos": [
+        1.3,
+        -0.95,
+        1.05
+      ],
+      "plume": {
+        "axis": [
+          1.371,
+          -1.15
+        ],
+        "z0": 0.4558,
+        "apex": 0.757,
+        "r_top": 0.1383,
+        "roof": 0.5,
+        "lean_y": -0.08
+      },
+      "horizontal_offset_from_plume_axis_m": 0.2122,
+      "height_above_roof_m": 0.55,
+      "nadir_cam_off_axis_deg": 21.1,
+      "clearance_m": 0.2181,
+      "nearest": "FIRE_09",
+      "note": "나디르 카메라(DRN_Cam) 광축에서 21° 지점에 화재동이 온다. 화각 54° 이상이면 프레임에 들어온다."
+    }
+  ],
+  "attitude": {
+    "tilt_max_deg": 10.0,
+    "tilt_peak_deg": 9.91,
+    "hover_tilt_max_deg": 0.0,
+    "land_tilt_max_deg": 0.0,
+    "yaw_mode": "진행 방향 추종 (수평속도 0.030 m/s 이상), 착륙 전 초기 기수 복귀",
+    "hover_drift_m": 0.003
+  },
+  "rotors": {
+    "omega_idle_rad_s": 10.5,
+    "omega_flight_rad_s": 72.0,
+    "deg_per_frame_idle": 20.1,
+    "deg_per_frame_flight": 137.5,
+    "total_rev": 264.78,
+    "note": "블레이드 2장(180° 대칭)이라 프레임당 180° 근처면 프롭이 멈춰 보인다. 비행 138°/frame 은 그 함정 밖이다. 모션 블러 권장."
+  },
+  "qa": {
+    "measured": true,
+    "clearance_required_m": 0.15,
+    "clearance_min_m": 0.1702,
+    "clearance_min_frame": 300,
+    "clearance_min_obstacle": "FIRE_02",
+    "frames_below_requirement": 0,
+    "speed_max_mps": 1.257,
+    "climb_rate_max_mps": 0.4,
+    "vertical_takeoff": true,
+    "vertical_landing": true,
+    "spec_waypoint_check_at_cruise_z": [
+      {
+        "tag": "TAKEOFF",
+        "pos": [
+          -1.95,
+          0.8,
+          0.62
+        ],
+        "clearance_m": 1.1442,
+        "nearest": "SEC_07",
+        "ok": true
+      },
+      {
+        "tag": "FIRE_2_APPROACH",
+        "pos": [
+          -0.22,
+          0.79,
+          0.62
+        ],
+        "clearance_m": 0.1379,
+        "nearest": "SEC_02",
+        "ok": false
+      },
+      {
+        "tag": "FIRE_2_SHOOT",
+        "pos": [
+          0.03,
+          0.8700000000000001,
+          0.62
+        ],
+        "clearance_m": 0.0306,
+        "nearest": "FIRE_02",
+        "ok": false
+      },
+      {
+        "tag": "TRANSIT",
+        "pos": [
+          0.6,
+          -0.4,
+          0.62
+        ],
+        "clearance_m": 0.3546,
+        "nearest": "SEC_06",
+        "ok": true
+      },
+      {
+        "tag": "FIRE_9_SHOOT",
+        "pos": [
+          1.3,
+          -0.8899999999999999,
+          0.62
+        ],
+        "clearance_m": 0.0793,
+        "nearest": "FIRE_09",
+        "ok": false
+      },
+      {
+        "tag": "RETURN",
+        "pos": [
+          -1.5499999999999998,
+          0.6000000000000001,
+          0.62
+        ],
+        "clearance_m": 0.9073,
+        "nearest": "SEC_01",
+        "ok": true
+      },
+      {
+        "tag": "OVER_HOME",
+        "pos": [
+          -1.95,
+          0.8,
+          0.62
+        ],
+        "clearance_m": 1.1442,
+        "nearest": "SEC_07",
+        "ok": true
+      }
+    ],
+    "altitude_change_reason": "스펙 순항고도 0.62 m 는 SEC_02 연기 기둥(0.579~0.977) 한가운데이고 최고 건물(0.643) 보다 낮다. 접근·촬영 구간에서 고도를 올려 해결했다.",
+    "plumes": {
+      "SEC_02": {
+        "axis": [
+          -0.023,
+          1.09
+        ],
+        "z0": 0.5792,
+        "apex": 0.977,
+        "r_top": 0.1505,
+        "roof": 0.61,
+        "lean_y": 0.102
+      },
+      "SEC_09": {
+        "axis": [
+          1.371,
+          -1.15
+        ],
+        "z0": 0.4558,
+        "apex": 0.757,
+        "r_top": 0.1383,
+        "roof": 0.5,
+        "lean_y": -0.08
+      }
+    }
+  },
+  "ugv_cross_check": {
+    "timeline_total_frames": 720,
+    "same_length": true,
+    "ugv_events": [
+      [
+        "START",
+        1
+      ],
+      [
+        "ALPHA",
+        75
+      ],
+      [
+        "BRAVO",
+        364
+      ],
+      [
+        "CHARLIE",
+        568
+      ],
+      [
+        "FINISH",
+        695
+      ],
+      [
+        "pothole_1",
+        419
+      ],
+      [
+        "barrier_1",
+        429
+      ],
+      [
+        "pothole_2",
+        596
+      ],
+      [
+        "barrier_2",
+        695
+      ]
+    ],
+    "overlapping_with_drone_hover": [],
+    "note": "드론 호버 구간과 UGV 이벤트가 겹치면 한 컷에 둘 다 담기 어렵다. cinematographer 는 이 목록을 보고 컷을 나눈다."
+  }
+}
